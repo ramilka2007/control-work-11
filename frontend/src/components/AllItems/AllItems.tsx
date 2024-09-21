@@ -11,7 +11,6 @@ interface Props {
 }
 
 const AllItems: React.FC<Props> = ({ items, isLoadingItems }) => {
-  console.log(items);
   return (
     <>
       {isLoadingItems ? (

@@ -94,7 +94,7 @@ const AddNewItem = () => {
         <form onSubmit={onFormSubmit} className="w-50 mx-auto">
           <h2 className="text-center my-4">Create new item card</h2>
           {error ? (
-            <Alert severity="error">Title and description must be field</Alert>
+            <Alert severity="error">Title, description, price and category must be field</Alert>
           ) : null}
 
           <div className="mb-3 w-75 mx-auto">
@@ -150,6 +150,7 @@ const AddNewItem = () => {
                 name="category"
                 onChange={changeForm}
                 value={newItem.category}
+                required
               >
                 {categories.map((category) => (
                   <option key={category._id} value={category._id}>
