@@ -38,7 +38,6 @@ itemsRouter.get('/:id', async (req, res, next) => {
 itemsRouter.post('/', auth, imagesUpload.single('image'), async (req: RequestWithUser, res, next) => {
 
     try {
-        console.log(req.user?._id)
         const itemData = new Item({
             user: req.user?._id,
             title: req.body.title,
@@ -57,8 +56,31 @@ itemsRouter.post('/', auth, imagesUpload.single('image'), async (req: RequestWit
         if (e instanceof mongoose.Error.ValidationError) {
             return res.status(422).send(e);
         }
-
         return next(e);
+    }
+});
+
+itemsRouter.delete('/:id', auth ,async (req: RequestWithUser, res, next) => {
+    try {
+        if (!req.params.id) {
+            res.status(400).send({"error": "Id items params must be in url"});
+        }
+
+        const user = req.user?._id;
+        const item = await Item.findById(req.params.id);
+
+        if (user && item) {
+            if (String(item.user._id) === String(user._id)) {
+                await Item.findByIdAndDelete(req.params.id);
+                return res.send('Item was success deleted');
+            } else {
+                return res.status(403).send('You are not the author of this items');
+            }
+        }
+
+        return res.send('Item was success deleted');
+    } catch (e) {
+        next(e);
     }
 });
 
