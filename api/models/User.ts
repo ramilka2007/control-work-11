@@ -1,6 +1,6 @@
 import mongoose, {HydratedDocument} from 'mongoose';
 import bcrypt from 'bcrypt';
-import { UserFields, UserMethods, UserModel } from '../types';
+import {UserFields, UserMethods, UserModel} from '../types';
 import { randomUUID } from 'node:crypto';
 
 const SALT_WORK_FACTOR = 10;
@@ -23,6 +23,10 @@ const UserSchema = new Schema<UserFields, UserModel, UserMethods>({
             message: 'This user is already registered!',
         }
     },
+    password: {
+        type: String,
+        required: true,
+    },
     displayName: {
         type: String,
         required: true,
@@ -32,10 +36,7 @@ const UserSchema = new Schema<UserFields, UserModel, UserMethods>({
         required: true,
         unique: true,
     },
-    password: {
-        type: String,
-        required: true,
-    },
+
     token: {
         type: String,
         required: true,

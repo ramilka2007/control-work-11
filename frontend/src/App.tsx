@@ -3,6 +3,7 @@ import Toolbar from "./UI/Toolbar/Toolbar";
 import Register from "./features/users/Register";
 import {Login} from "@mui/icons-material";
 import {Route, Routes} from "react-router-dom";
+import Home from "./container/Home/Home";
 
 const App = () => {
   return (
