@@ -39,7 +39,7 @@ const UserMenu: React.FC<Props> = ({ user }) => {
           </MenuItem>
         </Menu>
         <div className="text-end">
-          <Button variant="outlined" onClick={() => navigate('/new-post')}>Add new product</Button>
+          <Button variant="outlined" onClick={() => navigate('/new-item')}>Add new product</Button>
         </div>
       </Box>
     </>

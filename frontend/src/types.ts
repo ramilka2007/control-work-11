@@ -38,3 +38,28 @@ export interface Category {
     _id: string;
     title: string;
 }
+
+export interface ItemForm {
+    title: string;
+    description: string;
+    image: string | null;
+    price: number;
+    category: string;
+}
+
+export interface IItem {
+    title: string;
+    description: string;
+    image: string | null;
+    price: number;
+    category: string;
+}
+
+export interface AllItems {
+    _id: string;
+    title: string;
+    description: string;
+    image: string | null;
+    user: User;
+    price: number;
+}

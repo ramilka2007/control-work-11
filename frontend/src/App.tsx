@@ -1,9 +1,10 @@
 import './App.css'
 import Toolbar from "./UI/Toolbar/Toolbar";
 import Register from "./features/users/Register";
-import {Login} from "@mui/icons-material";
 import {Route, Routes} from "react-router-dom";
 import Home from "./container/Home/Home";
+import Login from "./features/users/Login";
+import AddNewItem from "./container/AddNewItem/AddNewItem";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/" element={<Home/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/login" element={<Login/>}/>
+              <Route path="/new-item" element={<AddNewItem/>}/>
             <Route path="*" element={(<h1>Not found</h1>)}/>
           </Routes>
         </main>

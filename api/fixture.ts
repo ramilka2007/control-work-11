@@ -31,13 +31,13 @@ const run = async () => {
 
     const [category1, category2, category3] = await Category.create(
         {
-            title: "category1",
+            title: "Telephones",
         },
         {
-            title: "category2",
+            title: "Computers",
         },
         {
-            title: "category3",
+            title: "Headphones",
         },
     );
     await db.close();

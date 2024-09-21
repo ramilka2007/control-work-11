@@ -6,7 +6,7 @@ import {
   Grid,
   TextField,
   Typography,
-  Link,
+  Link, Alert,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
@@ -58,6 +58,11 @@ const Register = () => {
         alignItems: 'center',
       }}
     >
+      {error && (
+          <Alert severity="error" sx={{ mt: 3, width: '100%' }}>
+            {error.message}
+          </Alert>
+      )}
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
         <LockOutlinedIcon />
       </Avatar>
@@ -94,6 +99,32 @@ const Register = () => {
               onChange={inputChangeHandler}
               error={Boolean(getFieldError('password'))}
               helperText={getFieldError('password')}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              required
+              type="text"
+              label="Display name"
+              name="displayName"
+              autoComplete="new-displayName"
+              value={state.displayName}
+              onChange={inputChangeHandler}
+              error={Boolean(getFieldError('displayName'))}
+              helperText={getFieldError('displayName')}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              required
+              type="tel"
+              label="Phone"
+              name="phone"
+              autoComplete="new-phone"
+              value={state.phone}
+              onChange={inputChangeHandler}
+              error={Boolean(getFieldError('phone'))}
+              helperText={getFieldError('phone')}
             />
           </Grid>
         </Grid>
