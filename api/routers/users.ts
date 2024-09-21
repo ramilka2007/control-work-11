@@ -9,6 +9,8 @@ usersRouter.post('/', async (req, res, next) => {
     try {
         const user = new User({
             username: req.body.username,
+            displayName:  req.body.displayName,
+            phone:  req.body.phone,
             password: req.body.password,
         });
 

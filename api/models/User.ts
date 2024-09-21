@@ -23,6 +23,15 @@ const UserSchema = new Schema<UserFields, UserModel, UserMethods>({
             message: 'This user is already registered!',
         }
     },
+    displayName: {
+        type: String,
+        required: true,
+    },
+    phone: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     password: {
         type: String,
         required: true,
@@ -30,7 +39,7 @@ const UserSchema = new Schema<UserFields, UserModel, UserMethods>({
     token: {
         type: String,
         required: true,
-    }
+    },
 });
 
 UserSchema.methods.checkPassword = function(password) {
